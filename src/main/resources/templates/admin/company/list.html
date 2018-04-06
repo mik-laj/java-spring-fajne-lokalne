@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">City</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <div class="float-right">
+        <a data-th-href="@{/admin/company/add/}" class="btn btn-default">
+            <i class="fa fa-plus"></i> Add company
+        </a>
+    </div>
+
+    <h1>Companies</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-right">
+                        <th-block data-th-include="partials :: filter-button"></th-block>
+                        <th-block data-th-include="partials :: size"></th-block>
+                    </div>
+                    <h4 class="card-title">List</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="filters collapse" id="filters">
+                        <div class="card card-body">
+                            <th-block data-th-include="admin/company/filter-form"></th-block>
+                        </div>
+                    </div>
+
+                    <div class="table-full-width table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>KRS</th>
+                                <th>City</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="object: ${objectsList}" data-th-object="${object}">
+                                <td data-th-text="*{id}">
+                                    5
+                                </td>
+                                <td data-th-text="*{name}">
+                                    Potato
+                                </td>
+                                <td data-th-text="*{krs}">
+                                    Potato
+                                </td>
+                                <td>
+                                    <th-block data-th-if="*{city}">
+                                        <a href="#" data-th-href="@{/admin/city/{id}/(id=*{city.id})}" data-th-text="*{{city}}">
+                                            Warsaw
+                                        </a>
+                                    </th-block>
+                                    <th-block data-th-unless="*{city}">
+                                        No city
+                                    </th-block>
+                                </td>
+                                <td class="td-actions text-right">
+                                    <a href="#" data-th-href="@{/admin/company/{id}/(id=${object.id})}" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Show">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a href="#" data-th-href="@{/admin/company/{id}/edit/(id=${object.id})}" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" data-th-href="@{/admin/company/{id}/delete/(id=${object.id})}" rel="tooltip" title="" class="btn btn-danger btn-simple btn-link" data-original-title="Remove">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div data-th-include="partials :: pager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

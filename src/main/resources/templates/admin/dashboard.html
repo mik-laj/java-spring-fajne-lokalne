@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+<div data-layout-fragment="content">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="card card-stats" href="/admin/product">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <i class="big-icon text-primary nc-icon nc-app"></i>
+                        </div>
+                        <div class="col-7">
+                            <div class="numbers">
+                                <div class="card-category">Clients</div>
+                                <!--<div class="card-title">2</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!--<hr/>-->
+                    <!--Last client: <th-block th:text="${client}"></th-block>-->
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="card card-stats" href="/admin/company">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <i class="big-icon text-danger nc-icon nc-bag"></i>
+                        </div>
+                        <div class="col-7">
+                            <div class="numbers">
+                                <div class="card-category">Company</div>
+                                <!--<div class="card-title">4</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!--<hr/>-->
+                    <!--Last client: <th-block th:text="${client}"></th-block>-->
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="card card-stats" href="/admin/city">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <i class="big-icon text-success nc-icon nc-pin-3"></i>
+                        </div>
+                        <div class="col-7">
+                            <div class="numbers">
+                                <div class="card-category">City</div>
+                                <!--<div class="card-title">11</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!--<hr/>-->
+                    <!--Last client: <th-block th:text="${client}"></th-block>-->
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="card card-stats" href="/admin/user">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <i class="big-icon text-info nc-icon nc-circle-09"></i>
+                        </div>
+                        <div class="col-7">
+                            <div class="numbers">
+                                <div class="card-category">User</div>
+                                <!--<div class="card-title">50</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!--<hr/>-->
+                    <!--Last client: <th-block th:text="${client}"></th-block>-->
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="card card-stats" href="/admin/review">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <i class="big-icon text-warning nc-icon nc-check-2"></i>
+                        </div>
+                        <div class="col-7">
+                            <div class="numbers">
+                                <div class="card-category">Review</div>
+                                <!--<div class="card-title">3</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!--<hr/>-->
+                    <!--Last client: <th-block th:text="${client}"></th-block>-->
+                </div>
+            </a>
+        </div>
+        <!--<div class="col-md-3">-->
+            <!--<a class="card card-stats" href="/admin/staff">-->
+                <!--<div class="card-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-5 text-center">-->
+                            <!--<i class="big-icon text-info nc-icon nc-bag"></i>-->
+                        <!--</div>-->
+                        <!--<div class="col-7">-->
+                            <!--<div class="numbers">-->
+                                <!--<div class="card-category">Staff count</div>-->
+                                <!--<div class="card-title">4</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card-footer text-muted">-->
+                    <!--&lt;!&ndash;<hr/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;Last client: <th-block th:text="${client}"></th-block>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+    </div>
+</div>
+</body>
+<th-block layout:fragment="scripts">
+    <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+    <script src="/assets/admin/admin/js/demo.js" data-th-src="@{/assets/admin/js/demo.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+
+            demo.showNotification();
+
+        });
+    </script>
+</th-block>
+</html>

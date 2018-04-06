@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <div class="float-right">
+        <a data-th-href="@{/admin/product/add/}" class="btn btn-default">
+            <i class="fa fa-plus"></i> Add product
+        </a>
+    </div>
+    <h1>Products</h1>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-right">
+                        <a class="btn btn-default" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="filters">
+                            <th-block data-th-include="icons :: filter"></th-block>
+                            Filters
+                        </a>
+                        <th-block data-th-include="partials :: size"></th-block>
+                    </div>
+                    <h4 class="card-title">List</h4>
+
+                </div>
+                <div class="card-body">
+                    <div class="filters collapse" id="filters">
+                        <div class="card card-body">
+                            <th-block data-th-include="admin/product/filter-form"></th-block>
+                        </div>
+                    </div>
+
+                    <div class="table-full-width table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Company</th>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="object: ${objectsList}">
+                                <td data-th-text="${object.id}">
+                                    5
+                                </td>
+                                <td>
+                                    <div data-th-if="${object.company}">
+                                        <a data-th-href="@{/admin/company/{id}/(id=${object.company.id})}"  data-th-text="${{object.company}}">
+                                            Fruits and Vegetable Company
+                                        </a>
+                                    </div>
+                                    <div data-th-unless="${object.company}">
+                                        No company
+                                    </div>
+                                </td>
+                                <td data-th-text="${{object.name}}">
+                                    Potato
+                                </td>
+                                <td class="td-actions text-right">
+                                    <a href="#" data-th-href="@{/admin/product/{id}/(id=${object.id})}" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Show">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a href="#" data-th-href="@{/admin/product/{id}/edit/(id=${object.id})}" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" data-th-href="@{/admin/product/{id}/delete/(id=${object.id})}" rel="tooltip" title="" class="btn btn-danger btn-simple btn-link" data-original-title="Remove">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div data-th-include="partials :: pager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th-block layout:fragment="scripts">
+    <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+    <script src="/assets/admin/admin/js/demo.js" data-th-src="@{/assets/admin/js/demo.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/admin/js/demos.js
+            demo.initDashboardPageCharts();
+
+            demo.showNotification();
+
+        });
+    </script>
+</th-block>
+</html>

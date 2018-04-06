@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <form action="" data-th-action="@{/admin/user/}"  data-th-object="${filter}" method="get">
+        <p>Filters</p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="filterUsername">Username:</label>
+                <input type="text" class="form-control" data-th-field="*{username}" id="filterUsername" placeholder="Search keywords"/>
+            </div>
+            <div class="col-md-12">
+                <button type="submit">
+                    <i class="nc-icon nc-zoom-split"></i> Search
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

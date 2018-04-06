@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout/detail">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <meta name="csrf-value" data-th-value="${_csrf.token}"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/product/}">Products</a></li>
+        <li class="breadcrumb-item active" aria-current="page" data-th-text="${{object}}">Product #22</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+
+    <h1 data-th-text="${{object}}">Product #555</h1>
+
+    <th-block data-th-if="${!object.tags.isEmpty()}">
+        <strong>Tags: </strong>
+        <th-block data-th-each="tag : ${object.tags}">
+            <a data-th-href="@{/tag/{id}/(id=${tag.id})}" data-th-text="${{tag}}"
+               class="badge badge-pill badge-dark"></a>
+        </th-block>
+    </th-block>
+
+    <div data-th-utext="${object.description}">
+        Potato
+    </div>
+
+    <div>
+        Vote:
+        <div class="vote" data-th-attr="data-id=${object.id},data-value-int=${object.voteInt}" >
+            <div class="vote-list">
+                <span data-action="vote" data-action-value="5" class="vote-btn"><i class="fa fa-star"></i></span>
+                <span data-action="vote" data-action-value="4" class="vote-btn"><i class="fa fa-star"></i></span>
+                <span data-action="vote" data-action-value="3" class="vote-btn"><i class="fa fa-star"></i></span>
+                <span data-action="vote" data-action-value="2" class="vote-btn"><i class="fa fa-star"></i></span>
+                <span data-action="vote" data-action-value="1" class="vote-btn"><i class="fa fa-star"></i></span>
+            </div>
+            <span class="vote-value" data-th-attr="data-value=${object.vote}"></span>
+        </div>
+
+
+    </div>
+
+    <th-block data-th-if="${object.company}">
+        <strong>Company:</strong>
+        <a data-th-href="@{/company/{id}/(id=${object.company.id})}" data-th-text="${{object.company}}">
+            Fruits and Vegetable Company
+        </a>
+    </th-block>
+    <div class="row">
+        <th-block data-th-each="image: ${object.images}">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <a data-th-href="${image.path}">
+                        <img data-th-src="${image.path}" class="img-thumbnail"/>
+                    </a>
+                </div>
+            </div>
+        </th-block>
+    </div>
+
+    <th-block data-th-each="review: ${reviews}">
+        <div class="card mb-4">
+            <div class="card-body" data-th-utext="${review.content}">
+                Lorem ipsum
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card-header"><i class="fa fa-times"></i> Cons</div>
+                    <div class="list-group">
+                        <div class="list-group-item"
+                             data-th-each="object: ${review.cons}"
+                             data-th-text="${object.content}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-header"><i class="fa fa-times"></i> Pros</div>
+                    <div class="list-group">
+                        <div class="list-group-item"
+                             data-th-each="object: ${review.pros}"
+                             data-th-text="${object.content}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col">
+                        <th-block data-th-if="${{review.createdBy}}">
+                            <fa class="fa fa-user"></fa>
+                            <th-block data-th-text="${{review.createdBy}}"></th-block>
+                        </th-block>
+                    </div>
+                    <div class="col text-right">
+                        <th-block data-th-if="${{review.creationDate}}">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <th-block data-th-text="${#dates.format(review.creationDate, 'dd-MM-yyyy')}"></th-block>
+                        </th-block>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </th-block>
+    <div class="card" data-sec-authorize="isAuthenticated()">
+        <div class="card-header">
+            Add review
+        </div>
+        <div class="card-body">
+            <form action="#" data-th-action="@{/product/{id}/add-review(id=${object.id})}" data-th-object="${formData}"
+                  method="post">
+                <div data-th-include="product/review-form"></div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-check" aria-hidden="true"></i> Add
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<th-block data-layout-fragment="scripts">
+    <script src="/assets/js/vote.js" type="text/javascript"></script>
+</th-block>
+
+
+</body>
+</html>

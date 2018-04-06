@@ -1,0 +1,64 @@
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+}
+.form-group .select2-container {
+    width: 100% !important;
+}
+
+.big-icon {
+    font-size: 4em;
+}
+a.card {
+    color: #212529;
+}
+a.card:hover, a:focus {
+    background: #F0f0f0;;
+}
+.card-login .card-body {
+    padding: 45px;
+}
+
+body.plain-layout {
+}
+.plain-layout:after, .plain-layout:before {
+    content:'';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.plain-layout:before {
+    opacity: .33;
+    background: #000000;
+}
+.plain-layout:after {
+    background: linear-gradient(to bottom,  rgba(255, 82, 33, 0.7) 0%,  rgba(255, 82, 33, 0.3) 100%);
+    z-index: -1;
+}
+.plain-layout .page-background {
+    background: url('/assets/admin/img/main-bg.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+}
+.plain-layout .main-panel {
+    width: 100%;
+    float: none;
+}
+.plain-layout .content {
+    display: flex;
+    align-items: center;
+}
+
+textarea.form-control {
+    height: auto;
+}

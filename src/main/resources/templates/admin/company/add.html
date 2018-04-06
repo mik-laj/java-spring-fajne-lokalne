@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/company/}">Companies</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add company</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+
+    <h1>Add company</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Form</h2>
+                </div>
+                <div class="card-body">
+                    <form action="#" data-th-action="@{/admin/company/add}" data-th-object="${formData}" method="post">
+                        <div data-th-include="admin/company/form"></div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-check" aria-hidden="true"></i> Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

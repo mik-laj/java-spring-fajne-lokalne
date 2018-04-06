@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" required="" data-th-field="*{name}"
+           data-th-classappend="${#fields.hasErrors('name')}? is-invalid"/>
+    <div data-th-if="${#fields.hasErrors('name')}" data-th-each="err : ${#fields.errors('name')}" data-th-text="${err}"
+         class="invalid-feedback">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="inputCompany">Company</label>
+    <select class="form-control select2" data-th-attr="data-ajax--url=@{/api/company/s2}" id="inputCompany"
+            data-th-field="*{company.id}">
+        <option data-th-value="*{company.id}"
+                data-th-text="*{company.name}" selected="selected">
+        </option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="inputTags">Tags</label>
+    <select class="form-control select2" data-th-attr="data-ajax--url=@{/api/tag/s2}" data-tags="true" id="inputTags"
+            data-th-field="*{tags}" multiple="multiple">
+        <option data-th-each="tag: *{tags}"
+                data-th-value="${{tag}}"
+                data-th-text="${tag}"
+                selected="selected">
+        </option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="inputDescription">Description</label>
+    <textarea class="form-control wysiwyg-editor" id="inputDescription" required="" data-th-field="*{description}"
+              data-th-classappend="${#fields.hasErrors('description')}? is-invalid"></textarea>
+    <div data-th-if="${#fields.hasErrors('description')}"
+         data-th-each="err : ${#fields.errors('description')}"
+         data-th-text="${description}"
+         class="invalid-feedback">
+    </div>
+</div>
+
+</body>
+</html>

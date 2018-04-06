@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">List of files</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1>List of files</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Files</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li data-th-each="file : ${files}">
+                            <a data-th-href="${file}" data-th-text="${file}" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

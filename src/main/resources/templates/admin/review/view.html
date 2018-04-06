@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/review/}">Reviews</a></li>
+        <li class="breadcrumb-item active" aria-current="page" data-th-text="${{object}}">Review #22</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <!--<table class="table table-hover">-->
+    <!--<tbody>-->
+    <!--<tr data-th-each="var : ${#vars}">-->
+    <!--<td data-th-text="${var.key}"></td>-->
+    <!--<td data-th-text="${var.value}"></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!---->
+    <div class="btn-group float-right">
+        <a href="#" data-th-href="@{/admin/review/{id}/edit/(id=${object.id})}" rel="tooltip" class="btn btn-info"
+           data-original-title="Edit">
+            <i class="fa fa-edit"></i>
+        </a>
+        <a href="#" data-th-href="@{/admin/review/{id}/delete/(id=${object.id})}" rel="tooltip" class="btn btn-danger"
+           data-original-title="Remove">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+
+    <h1 data-th-text="${{object}}">Review #555</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">
+                    <h4 class="card-title">Object info</h4>
+                    <!--<p class="card-category">Here is a subtitle for this table</p>-->
+                </div>
+                <div class="card-body table-full-width table-responsive">
+                    <table class="table" data-th-object="${object}">
+                        <tbody>
+                        <tr>
+                            <td>
+                                Id:
+                            </td>
+                            <td data-th-text="*{id}">
+                                5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Product:</td>
+                            <td>
+                                <th-block data-th-if="${object.product}">
+                                    <a href="" data-th-text="${{object.product}}">
+                                        Fruits and Vegetable Company
+                                    </a>
+                                </th-block>
+                                <th-block data-th-unless="${object.product}">
+                                    No product
+                                </th-block>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Content:
+                            </td>
+                            <td data-th-text="*{content}">
+                                Lorem ipsum
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">
+                    <h4 class="card-title">Object info</h4>
+                    <!--<p class="card-category">Here is a subtitle for this table</p>-->
+                </div>
+                <div class="card-body table-full-width table-responsive">
+                    <table class="table" data-th-object="${object}">
+                        <tbody>
+                        <tr>
+                            <td>
+                                Created By:
+                            </td>
+                            <td>
+                                <th-block data-th-if="*{createdBy}">
+                                    <a href="#"
+                                       data-th-href="@{/admin/user/{id}/(id=*{createdBy.id})}"
+                                       data-th-text="*{{createdBy}}">
+                                    </a>
+                                </th-block>
+                                <th-block data-th-unless="*{createdBy}">
+                                    No user
+                                </th-block>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                creationDate:
+                            </td>
+                            <td data-th-text="*{creationDate}">
+                                5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Last Modified By:
+                            </td>
+                            <td>
+                                <th-block data-th-if="*{lastModifiedBy}">
+                                    <a href="#"
+                                       data-th-href="@{/admin/user/{id}/(id=*{lastModifiedBy.id})}"
+                                       data-th-text="*{{lastModifiedBy}}">
+                                    </a>
+                                </th-block>
+                                <th-block data-th-unless="*{lastModifiedBy}">
+                                    No user
+                                </th-block>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                lastModifiedDate:
+                            </td>
+                            <td data-th-text="*{lastModifiedDate}">
+                                5
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card-header">
+                    <h4 class="card-title"><i class="fa fa-check"></i> Cons</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-full-width table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Content</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="object: ${object.cons}" data-th-object="${object}">
+                                <td data-th-text="*{id}">
+                                    5
+                                </td>
+                                <td data-th-text="*{content}">
+                                    5
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-header">
+                    <h4 class="card-title"><i class="fa fa-times"></i> Pros</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-full-width table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Content</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-th-each="object: ${object.pros}" data-th-object="${object}">
+                                <td data-th-text="*{id}">
+                                    5
+                                </td>
+                                <td data-th-text="*{content}">
+                                    5
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/user/}">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add user</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+
+    <h1>Add User</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Form</h2>
+                </div>
+                <div class="card-body">
+                    <form action="#" data-th-action="@{/admin/user/add}" data-th-object="${formData}" method="post">
+                        <div data-th-include="admin/user/form"></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword">Password</label>
+                                <input type="text" class="form-control" id="inputPassword" required="" data-th-field="*{password}"
+                                       data-th-classappend="${#fields.hasErrors('password')}? is-invalid"/>
+                                <div data-th-if="${#fields.hasErrors('password')}"
+                                     data-th-each="err : ${#fields.errors('password')}"
+                                     data-th-text="${err}"
+                                     class="invalid-feedback">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputPasswordConfirm">Password confirm</label>
+                                <input type="text" class="form-control" id="inputPasswordConfirm" required="" data-th-field="*{passwordConfirm}"
+                                       data-th-classappend="${#fields.hasErrors('passwordConfirm')}? is-invalid"/>
+                                <div data-th-if="${#fields.hasErrors('passwordConfirm')}"
+                                     data-th-each="err : ${#fields.errors('passwordConfirm')}"
+                                     data-th-text="${err}"
+                                     class="invalid-feedback">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-check" aria-hidden="true"></i> Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

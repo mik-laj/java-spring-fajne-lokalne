@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout/detail">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <div class="float-right">
+        <th-block data-th-include="partials :: size"></th-block>
+        <th-block data-th-include="partials :: filter-button"></th-block>
+    </div>
+    <h1>Products</h1>
+
+    <div class="filters collapse" id="filters">
+        <div class="card card-body mb-2">
+            <th-block data-th-include="product/filter-form"></th-block>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" data-th-each="product: ${objectsList}">
+            <a data-th-href="@{/product/{id}/(id=${product.id})}" class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title" data-th-text="${{product}}"></h2>
+                    <p data-th-text="${#strings.abbreviate(product.description, 100)}"></p>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-muted" data-th-text="${{product.createdBy}}"></div>
+                        </div>
+                        <div class="col text-right">
+                            <div class="text-muted" data-th-text="${#dates.format(product.creationDate, 'dd-MM-yyyy')}"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div data-th-include="partials :: pager"></div>
+
+</div>
+</body>
+</html>

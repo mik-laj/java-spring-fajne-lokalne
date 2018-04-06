@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout/detail">
+<head>
+    <title>Hello world page</title>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/company/}">Companies</a></li>
+        <li class="breadcrumb-item active" aria-current="page" data-th-text="${{object}}">Company #22</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1 data-th-text="${{object}}">Company #555</h1>
+    <p data-th-if="${object.city}">
+        <strong>City:</strong>
+        <a href="#" data-th-href="@{/city/{id}/(id=${object.city.id})}" data-th-text="${{object.city}}">
+            Warsaw
+        </a>
+    </p>
+    <p data-th-if="${object.krs}">
+        <strong>KRS:</strong>
+        <th-block data-th-text="${object.krs}">
+            123456789
+        </th-block>
+    </p>
+
+    <div class="row">
+        <div class="col-md-4" data-th-each="product: ${objectsList}">
+            <a data-th-href="@{/product/{id}/(id=${product.id})}" class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title" data-th-text="${{product}}"></h2>
+                    <p data-th-text="${#strings.abbreviate(product.description, 100)}"></p>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-muted" data-th-text="${{product.createdBy}}"></div>
+                        </div>
+                        <div class="col text-right">
+                            <div class="text-muted" data-th-text="${#dates.format(product.creationDate, 'dd-MM-yyyy')}"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div data-th-include="partials :: pager"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text"
+           class="form-control"
+           id="inputName"
+           required=""
+           data-th-field="*{name}"
+           data-th-classappend="${#fields.hasErrors('name')}? is-invalid"/>
+    <div data-th-if="${#fields.hasErrors('name')}"
+         data-th-each="err : ${#fields.errors('name')}"
+         data-th-text="${err}"
+         class="invalid-feedback"></div>
+</div>
+
+<div class="point-select">
+    <div class="form-group point-select">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control field-address" id="inputAddress" required=""/>
+    </div>
+    <input type="hidden" class="field-lat" id="inputLat" data-th-field="*{lat}"/>
+    <input type="hidden" class="field-lng" id="inputLng" data-th-field="*{lng}"/>
+
+    <div class="my-3 map-canvas" style="width: 100%; height: 300px;"></div>
+</div>

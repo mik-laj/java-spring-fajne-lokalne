@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text"
+               class="form-control"
+               id="inputName"
+               required=""
+               data-th-field="*{name}"
+               data-th-classappend="${#fields.hasErrors('name')}? is-invalid"/>
+        <div data-th-if="${#fields.hasErrors('name')}"
+             data-th-each="err : ${#fields.errors('name')}"
+             data-th-text="${err}"
+             class="invalid-feedback"></div>
+    </div>
+    <div class="form-group">
+        <label for="inputCity">City</label>
+        <select class="form-control select2"
+                data-th-attr="data-ajax--url=@{/api/city/s2}"
+                id="inputCity"
+                data-th-field="*{city.id}">
+            <option data-th-value="*{city.id}"
+                    data-th-text="*{city.name}" selected="selected">
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="inputKrs">KRS</label>
+        <input type="text"
+               class="form-control"
+               id="inputKrs"
+               required=""
+               data-th-field="*{krs}"
+               data-th-classappend="${#fields.hasErrors('krs')}? is-invalid"/>
+        <div data-th-if="${#fields.hasErrors('krs')}"
+             data-th-each="err : ${#fields.errors('krs')}"
+             data-th-text="${err}"
+             class="invalid-feedback"></div>
+    </div>
+</body>
+</html>

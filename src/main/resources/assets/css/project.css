@@ -1,0 +1,108 @@
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+.svg-icon svg{
+    vertical-align: .2em;
+}
+body.full {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body.full main {
+    flex: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+body.background .page-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+}
+body.background .page-background::after {
+    content: '';
+    display: block;
+    background: linear-gradient(to bottom, rgba(50, 40, 0, 0.8), rgba(50, 40, 0, 0.5));
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+body.background footer {
+    color: white;
+}
+body.background footer a {
+    color: white;
+}
+.vote.vote.vote:hover .vote-btn {
+    color: black;
+}
+.vote[data-value-int="1"] .vote-btn:nth-child(5), .vote[data-value-int="1"] .vote-btn:nth-child(5) ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-btn:nth-child(1):hover, .vote .vote-btn:nth-child(1):hover ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote[data-value-int="2"] .vote-btn:nth-child(4), .vote[data-value-int="2"] .vote-btn:nth-child(4) ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-btn:nth-child(2):hover, .vote .vote-btn:nth-child(2):hover ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote[data-value-int="3"] .vote-btn:nth-child(3), .vote[data-value-int="3"] .vote-btn:nth-child(3) ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-btn:nth-child(3):hover, .vote .vote-btn:nth-child(3):hover ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote[data-value-int="4"] .vote-btn:nth-child(2), .vote[data-value-int="4"] .vote-btn:nth-child(2) ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-btn:nth-child(4):hover, .vote .vote-btn:nth-child(4):hover ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote[data-value-int="5"] .vote-btn:nth-child(1), .vote[data-value-int="5"] .vote-btn:nth-child(1) ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-btn:nth-child(5):hover, .vote .vote-btn:nth-child(5):hover ~ .vote-btn {
+    color: lightgreen;
+}
+
+.vote .vote-value:after {
+    content: attr(data-value);
+}
+.vote-list {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+.vote-value {
+    color: green;
+}
+.vote-btn:hover {
+    color: blue;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/product/}">Products</a></li>
+        <li class="breadcrumb-item">
+            <a href="#" data-th-href="@{/admin/product/{id}/(id=${object.id})}" data-th-text="${{object}}">Product #4</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Edit product</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1>Edit product</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Form</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" data-th-action="@{/admin/product/{id}/edit/(id=${object.id})}" data-th-object="${formData}" method="post">
+                        <div data-th-include="admin/product/form"></div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-check" aria-hidden="true"></i> Edit
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

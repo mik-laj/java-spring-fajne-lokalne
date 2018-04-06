@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/admin/">Admin</a>
+        </li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/user/}">Users</a></li>
+        <li class="breadcrumb-item">
+            <a href="#" data-th-href="@{/admin/user/{id}/(id=${object.id})}" data-th-text="${{object}}">User #4</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            Delete user
+ 1       </li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1>Delete</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Form</h4>
+                </div>
+                <div class="card-body">
+                    <form action="" data-th-action="@{/admin/user/{id}/delete/(id=${object.id})}" method="post">
+                        <p data-th-text="|Are you sure you want to delete the object &quot;${{object.username}}&quot;?|"></p>
+                        <button class="btn btn-danger" type="submit">Confirm</button>
+                        <!--<input type="hidden" data-th-username="${_csrf.parameterName}" data-th-value="${_csrf.token}" />-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

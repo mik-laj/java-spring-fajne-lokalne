@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/review/}">Reviews</a></li>
+        <li class="breadcrumb-item">
+            <a href="#" data-th-href="@{/admin/review/{id}/(id=${object.id})}" data-th-text="${{object}}">Review #4</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Edit review</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1>Edit review</h1>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Form</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" data-th-action="@{/admin/review/{id}/edit/(id=${object.id})}" data-th-object="${formData}" method="post">
+                        <div data-th-include="admin/review/form"></div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-check" aria-hidden="true"></i> Edit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

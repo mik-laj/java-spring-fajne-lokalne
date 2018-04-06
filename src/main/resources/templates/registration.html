@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout/full-bg">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+</head>
+<body>
+<th-block data-layout-fragment="content">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-5 my-5">
+                <div class="card">
+                    <h1 class="card-title text-center my-3">Registration</h1>
+                    <div class="card-body">
+                        <form data-th-action="@{/register}" data-th-object="${formData}" method="post">
+                            <div data-th-if="${#fields.hasGlobalErrors()}"
+                                 data-th-each="err : ${#fields.globalErrors()}" data-th-text="${err}"
+                                 class="alert alert-danger"></div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputFirstName">First Name</label>
+                                    <input type="text" class="form-control" id="inputFirstName" required=""
+                                           data-th-field="*{firstName}"
+                                           data-th-classappend="${#fields.hasErrors('firstName')}? is-invalid"/>
+                                    <div data-th-if="${#fields.hasErrors('firstName')}"
+                                         data-th-each="err : ${#fields.errors('firstName')}" data-th-text="${err}"
+                                         class="invalid-feedback"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputLastName">Last Name</label>
+                                    <input type="text" class="form-control" id="inputLastName" required=""
+                                           data-th-field="*{lastName}"
+                                           data-th-classappend="${#fields.hasErrors('lastName')}? is-invalid"/>
+                                    <div data-th-if="${#fields.hasErrors('lastName')}"
+                                         data-th-each="err : ${#fields.errors('lastName')}" data-th-text="${err}"
+                                         class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputUsername">Username</label>
+                                <input type="text" class="form-control" id="inputUsername" required=""
+                                       data-th-field="*{username}"
+                                       data-th-classappend="${#fields.hasErrors('username')}? is-invalid"/>
+                                <div data-th-if="${#fields.hasErrors('username')}"
+                                     data-th-each="err : ${#fields.errors('username')}" data-th-text="${err}"
+                                     class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword" required="" name="password"
+                                           data-th-classappend="${#fields.hasErrors('password')}? is-invalid"/>
+                                    <div data-th-if="${#fields.hasErrors('password')}"
+                                         data-th-each="err : ${#fields.errors('password')}" data-th-text="${err}"
+                                         class="invalid-feedback"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPasswordConfirm">Confirm password</label>
+                                    <input type="password" class="form-control" id="inputPasswordConfirm" required=""
+                                           name="passwordConfirm"
+                                           data-th-classappend="${#fields.hasErrors('passwordConfirm')}? is-invalid"/>
+                                    <div data-th-if="${#fields.hasErrors('passwordConfirm')}"
+                                         data-th-each="err : ${#fields.errors('passwordConfirm')}" data-th-text="${err}"
+                                         class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-check" aria-hidden="true"></i> Register
+                                </button>
+                                <a href="/login">Already have an account?</a>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</th-block>
+</body>
+</html>

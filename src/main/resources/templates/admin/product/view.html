@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="admin/layout">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/">Admin</a></li>
+        <li class="breadcrumb-item"><a data-th-href="@{/admin/product/}">Products</a></li>
+        <li class="breadcrumb-item active" aria-current="page" data-th-text="${{object}}">Product #22</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+
+    <div class="float-right">
+        <a href="#" data-th-href="@{/admin/product/{id}/image/(id=${object.id})}" rel="tooltip" class="btn btn-info" data-original-title="Upload image">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i> Upload image
+        </a>
+        <div class="btn-group">
+            <a href="#" data-th-href="@{/admin/product/{id}/edit/(id=${object.id})}" rel="tooltip" class="btn btn-info" data-original-title="Edit">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a href="#" data-th-href="@{/admin/product/{id}/delete/(id=${object.id})}" rel="tooltip" class="btn btn-danger" data-original-title="Remove">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <h1 data-th-text="${{object}}">Product #555</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">
+                    <h4 class="card-title">Object info</h4>
+                    <!--<p class="card-category">Here is a subtitle for this table</p>-->
+                </div>
+                <div class="card-body table-full-width table-responsive">
+                    <table class="table" data-th-object="${object}">
+                        <tbody>
+                        <tr>
+                            <td>
+                                Id:
+                            </td>
+                            <td data-th-text="*{id}">
+                                5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Company:
+                            </td>
+                            <td>
+                                <div data-th-if="*{company}">
+                                    <a href="" data-th-text="*{{company}}">
+                                        Fruits and Vegetable Company
+                                    </a>
+                                </div>
+                                <div data-th-unless="*{company}">
+                                    No company
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td data-th-text="*{name}">
+                                Potato
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td data-th-utext="*{description}">
+                                Potato
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tags:</td>
+                            <td>
+                                <th-block data-th-if="*{!tags.isEmpty()}"
+                                          data-th-each="tag, iterStat : *{tags}"
+                                          data-th-text="!${iterStat.last} ? ${{tag}} + ',': ${{tag}}"></th-block>
+                                <th-block data-th-if="*{tags.isEmpty()}">No tags</th-block>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">
+                    <h4 class="card-title">Images</h4>
+                    <!--<p class="card-category">Here is a subtitle for this table</p>-->
+                </div>
+                <div class="card-body">
+                    <ul data-th-if="${!object.images.isEmpty()}">
+                        <li data-th-each="image:${object.images}">
+                            <a href="" data-th-text="${image.path}" data-th-href="${image.path}"></a>
+                        </li>
+                    </ul>
+                    <p data-th-if="${object.images.isEmpty()}">No images</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

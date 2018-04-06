@@ -1,0 +1,53 @@
+<div data-layout-fragment="sidebar" class="sidebar" data-image="/assets/admin/img/sidebar-5.jpg" data-color="green">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="/" class="simple-text">
+                Potato
+            </a>
+        </div>
+        <ul class="nav">
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/dashboard/') ? 'active':''}">
+                <a class="nav-link" data-th-href="@{/admin/dashboard/}">
+                    <i class="nc-icon nc-chart-pie-35"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/product/') ? 'active':''}">
+                <a class="nav-link" data-th-href="@{/admin/product/}">
+                    <i class="nc-icon nc-app"></i>
+                    <p>Product</p>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/company/') ? 'active':''}">
+                <a class="nav-link" data-th-href="@{/admin/company/}">
+                    <i class="nc-icon nc-bag"></i>
+                    <p>Company</p>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/city/') ? 'active':''}">
+                <a class="nav-link" data-th-href="@{/admin/city/}">
+                    <i class="nc-icon nc-pin-3"></i>
+                    <p>City</p>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/user/') ? 'active':''}">
+                <a class="nav-link" data-th-href="@{/admin/user/}">
+                    <i class="nc-icon nc-circle-09"></i>
+                    <p>User</p>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-th-classappend="${#httpServletRequest.getRequestURI().startsWith('/admin/review') ? 'active':''}">
+                <a class="nav-link" href="/admin/review">
+                    <i class="nc-icon nc-check-2"></i>
+                    <p>Review</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

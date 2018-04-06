@@ -1,0 +1,52 @@
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <span class="svg-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1">
+                        <path d="M134 7h-4C89 9 55 27 33 56c-35 47-43 117-20 184 23 71 56 134 103 179 48 46 112 74 193 74 80 0 131-17 159-55s32-90 32-158c0-21-8-39-20-53-12-13-27-22-43-29-32-14-68-25-92-44-22-17-33-37-50-61-18-24-41-50-86-69-26-12-52-17-75-17zm0 34c18 1 38 5 61 15 39 17 56 36 71 57 16 22 29 47 57 69 32 25 71 35 99 48 14 7 25 13 32 21s11 16 11 29c0 66-6 111-25 137-20 26-56 41-131 41l-15-1 67-46h-5a18 18 0 1 0 0-35h-6l-101 69a18 18 0 0 0-5 5 220 220 0 0 1-126-81l55-35a18 18 0 0 0-9-32 18 18 0 0 0-10 3l-56 36c-13-19-24-40-33-63l91-63h-6a18 18 0 1 0 0-35h-5l-94 64-5-15C27 171 35 112 61 78a86 86 0 0 1 73-37zm190 250a18 18 0 0 0-10 2l-64 41a18 18 0 1 0 19 30l64-41a18 18 0 0 0-9-32z" fill="currentColor"/>
+                    </svg>
+                </span>
+                <strong>Potato</strong>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/city/">City</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/company/">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/">Product</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active" data-sec-authorize="!isAuthenticated()">
+                        <a href="/register/" class="nav-link">Register</a>
+                    </li>
+                    <li class="nav-item" data-sec-authorize="!isAuthenticated()">
+                        <a href="/login/" class="nav-link">Sign in</a>
+                    </li>
+                    <li class="nav-item" data-sec-authorize="hasRole('ROLE_ADMIN')">
+                        <a href="/admin/" class="nav-link">Admin</a>
+                    </li>
+                    <li class="nav-item" data-sec-authorize="isAuthenticated()">
+                        <form data-th-action="@{/logout}" method="post">
+                            <button class="btn btn-link nav-link" href="/login?logout">
+                                Log out
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>

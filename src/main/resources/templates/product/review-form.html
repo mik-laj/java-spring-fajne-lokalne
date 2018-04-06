@@ -1,0 +1,116 @@
+<div class="form-group">
+    <label for="inputContent">Content</label>
+    <textarea class="form-control wysiwyg-editor"
+              id="inputContent"
+              required=""
+              data-th-field="*{content}"
+              data-th-classappend="${#fields.hasErrors('content')}? is-invalid"></textarea>
+    <div data-th-if="${#fields.hasErrors('content')}"
+         data-th-each="err : ${#fields.errors('content')}"
+         data-th-text="${content}"
+         class="invalid-feedback">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Cons</h3>
+        <div data-colleciton-form="">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-11">Content</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="item, stat : ${formData.cons}" data-th-object="${item}"
+                    data-th-attr="data-row-index=${stat.index}">
+                    <td>
+                        <input type="text"
+                               class="form-control"
+                               data-th-field="${formData.cons[__${stat.index}__]}"/>
+                    </td>
+                    <td>
+                        <a href="#" data-action="remove-row" class="btn btn-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
+                <template class="row-template">
+                    <tr data-row-index="PREVIEW">
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   data-th-name="|cons[PREVIEW]|"/>
+                        </td>
+                        <td>
+                            <a href="#" data-action="remove-row" class="btn btn-link" >
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="pull-right">
+                    <a href="#" class="btn btn-primary" data-action="add-row">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Pros</h3>
+        <div data-colleciton-form="">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-11">Content</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="item, stat : ${formData.pros}" data-th-object="${item}"
+                    data-th-attr="data-row-index=${stat.index}">
+                    <td>
+                        <input type="text"
+                               class="form-control"
+                               data-th-field="${formData.pros[__${stat.index}__]}"/>
+                    </td>
+                    <td>
+                        <a href="#" data-action="remove-row" class="btn btn-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
+                <template class="row-template">
+                    <tr data-row-index="PREVIEW">
+                        <td>
+                            <input type="text"
+                                   class="form-control"
+                                   data-th-name="|pros[PREVIEW]|"/>
+
+                        </td>
+                        <td>
+                            <a href="#" data-action="remove-row" class="btn btn-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="pull-right">
+                    <a href="#" class="btn btn-primary" data-action="add-row">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

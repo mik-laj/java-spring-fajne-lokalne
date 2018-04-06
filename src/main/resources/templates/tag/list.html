@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout/detail">
+<head>
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+
+<div data-layout-fragment="breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tags</li>
+    </ol>
+</div>
+
+<div data-layout-fragment="content">
+    <h1>Tags</h1>
+
+    <p>
+        <th-block data-th-if="${!objectsList.isEmpty()}">
+            <th-block data-th-each="tag, iterStat : ${objectsList}">
+                <a data-th-href="@{/tag/{id}/(id=${tag.id})}" data-th-text="${{tag}}"></a><th-block data-th-if="!${iterStat.last}">,</th-block>
+            </th-block>
+        </th-block>
+        <th-block data-th-if="${objectsList.isEmpty()}">No tags</th-block>
+    </p>
+</div>
+
+</body>
+</html>
